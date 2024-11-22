@@ -3,11 +3,12 @@ import sqlite3
 import matplotlib.pyplot as plt
 
 # read csv file to panda to get tables
-df_orders = pd.read_csv("./orders.csv")
+orders_table_url = "https://raw.githubusercontent.com/AbhishekSingh1909/Data-engineering-software-assignment/refs/heads/main/orders.csv"
+orders_items_table_url = "https://raw.githubusercontent.com/AbhishekSingh1909/Data-engineering-software-assignment/refs/heads/main/order_items.csv"
 
-# df_orders['order_date'] = pd.to_datetime(df_orders['order_date'])
+df_orders = pd.read_csv(orders_table_url)
 
-df_order_items = pd.read_csv("./order_items.csv")
+df_order_items = pd.read_csv(orders_items_table_url)
 
 # create company database
 conn = sqlite3.connect("company_database.db")
@@ -50,7 +51,7 @@ plt.gca().xaxis.set_major_locator(
 plt.title('Daily Sales', fontsize=16)
 plt.xlabel('Order Date', fontsize=12)
 plt.ylabel('Sales Amount ($)', fontsize=12)
-plt.xticks(rotation=45, fontsize=10)
+plt.xticks(rotation=60, fontsize=10)
 plt.yticks(fontsize=10)
 plt.grid(visible=True, linestyle='--', alpha=0.7)
 plt.legend(fontsize=10)
